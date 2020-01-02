@@ -34,7 +34,7 @@ export default {
           path: '/',
           name: 'index',
           meta: {
-            title: '首页',
+            title: 'Permission',
             icon: 'dashboard'
           },
           // component: Layout,
@@ -43,8 +43,24 @@ export default {
               path: 'home',
               name: 'home',
               meta: {
-                title: '主页'
-              }
+                title: 'Page Permission'
+              },
+              children: [
+                {
+                  path: 'menu1',
+                  name:'menu1',
+                  meta:{
+                    title:'menu1-1'
+                  }
+                },
+                 {
+                  path: 'menu',
+                  name:'menu1',
+                  meta:{
+                    title:'menu1-2'
+                  }
+                }
+              ]
               // route level code-splitting
               // this generates a separate chunk (about.[hash].js) for this route
               // which is lazy-loaded when the route is visited.
@@ -54,7 +70,7 @@ export default {
               path: '/about',
               name: 'about',
               meta: {
-                title: '关于我们'
+                title: 'Directive Permission'
               }
 
               // route level code-splitting
@@ -104,6 +120,4 @@ export default {
   height: 100%;
   width: 100% !important;
 }
-
-
 </style>

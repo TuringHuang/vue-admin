@@ -2,7 +2,7 @@
   <div>
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
-      <!-- <PageHeader></PageHeader> -->
+      <PageHeader></PageHeader>
       <p>主要内容区</p>
       <router-view></router-view>
     </div>
@@ -11,11 +11,11 @@
 
 <script>
 import sidebar from './Sidebar';
-// import PageHeader from '../components/PageHeader';
+import PageHeader from './PageHeader';
 export default {
   components: {
-    sidebar
-    // PageHeader
+    sidebar,
+    PageHeader
   }
 };
 </script>
