@@ -1,6 +1,6 @@
 <template>
   <div>
-    <logo :collpase="isCollapse"></logo>
+    <logo :collapse="isCollapse"></logo>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :collapse="isCollapse"
@@ -8,6 +8,7 @@
         :text-color="variables.menuText"
         :unique-opened="false"
         :active-text-color="variables.menuActiveText"
+        :collapse-transition="false"
       >
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path"></sidebar-item>
       </el-menu>
@@ -48,16 +49,16 @@ export default {
               children: [
                 {
                   path: 'menu1',
-                  name:'menu1',
-                  meta:{
-                    title:'menu1-1'
+                  name: 'menu1',
+                  meta: {
+                    title: 'menu1-1'
                   }
                 },
-                 {
-                  path: 'menu',
-                  name:'menu1',
-                  meta:{
-                    title:'menu1-2'
+                {
+                  path: 'menu2',
+                  name: 'menu1',
+                  meta: {
+                    title: 'menu1-2'
                   }
                 }
               ]
@@ -70,7 +71,7 @@ export default {
               path: '/about',
               name: 'about',
               meta: {
-                title: 'Directive Permission'
+                title: 'About'
               }
 
               // route level code-splitting

@@ -1,12 +1,13 @@
 <template>
-  <div class="logo-container" :class="{ collapse: collapse }">
-    <transition name="logo-fade">
-      <router-link v-if="collapse" class="siderbar-logo-link" to="/">
+  <div class="logo-container" :class="{ 'collapse': collapse }">
+    <!-- 注意：相同元素router-link的过渡动画需要设置key，否则无效 -->
+    <transition name="logoFade">
+      <router-link v-if="collapse" key="collapse"  to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo" />
         <h1 v-else class="sidebar-title">{{ title }}</h1>
       </router-link>
 
-      <router-link v-else class="siderbar-logo-link" to="/">
+      <router-link v-else  key="expand"  to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo" />
         <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
@@ -19,7 +20,7 @@ export default {
   props: {
     collapse: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data() {
@@ -32,12 +33,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.logo-fade-enter-active {
+.logoFade-enter-active {
   transition: opacity 1.5s;
 }
 
-.logo-fade-enter,
-.logo-fade-leave-to {
+.logoFade-enter,
+.logoFade-leave-to {
   opacity: 0;
 }
 
@@ -65,9 +66,9 @@ export default {
     vertical-align: middle
   }
 
-  & .collapse {
+  &.collapse {
     .sidebar-logo {
-      margin-right: 0;
+      margin-right: 0px;
     }
   }
 }

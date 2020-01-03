@@ -13,7 +13,6 @@ html {
   padding: 0;
 }
 
-
 a,
 a:focus,
 a:hover {
@@ -23,6 +22,7 @@ a:hover {
 }
 
 .clearfix {
+  &::before,
   &:after {
     visibility: hidden;
     display: block;
