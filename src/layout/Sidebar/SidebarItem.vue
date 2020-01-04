@@ -1,5 +1,6 @@
 <template>
-  <div class="menu-wrapper">
+  <!-- 不显示需要隐藏的路由 -->
+  <div v-if="!item.hidden" class="menu-wrapper">
     <!-- 递归组件必须要有结束条件 -->
     <template v-if="noChild(item.children)">
       <router-link :to="resolvePath('')">

@@ -10,7 +10,7 @@
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
       >
-        <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path"></sidebar-item>
+        <sidebar-item v-for="route in roles" :key="route.path" :item="route" :base-path="route.path"></sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -29,72 +29,11 @@ export default {
   },
 
   data() {
-    return {
-      routes: [
-        {
-          path: '/',
-          name: 'index',
-          meta: {
-            title: 'Permission',
-            icon: 'dashboard'
-          },
-          // component: Layout,
-          children: [
-            {
-              path: 'home',
-              name: 'home',
-              meta: {
-                title: 'Page Permission'
-              },
-              children: [
-                {
-                  path: 'menu1',
-                  name: 'menu1',
-                  meta: {
-                    title: 'menu1-1'
-                  }
-                },
-                {
-                  path: 'menu2',
-                  name: 'menu1',
-                  meta: {
-                    title: 'menu1-2'
-                  }
-                }
-              ]
-              // route level code-splitting
-              // this generates a separate chunk (about.[hash].js) for this route
-              // which is lazy-loaded when the route is visited.
-              // component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
-            },
-            {
-              path: '/about',
-              name: 'about',
-              meta: {
-                title: 'About'
-              }
-
-              // route level code-splitting
-              // this generates a separate chunk (about.[hash].js) for this route
-              // which is lazy-loaded when the route is visited.
-              // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-            }
-          ]
-        },
-        {
-          path: '/permission',
-          name: 'permission',
-          meta: {
-            title: '用户权限',
-            icon: 'lock'
-          }
-        }
-      ]
-    };
+    return {};
   },
 
   computed: {
-    ...mapGetters(['sidebar']),
+    ...mapGetters(['sidebar', 'roles']),
     isCollapse() {
       return !this.sidebar.isOpen;
     },

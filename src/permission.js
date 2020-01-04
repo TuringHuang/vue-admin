@@ -17,7 +17,7 @@ router.beforeEach(async (to, from, next) => {
   //根据是否有token做不同处理
   if (hasToken) {
     //有token,还去登录页，重定向到首页
-    if ((to.path = '/login')) {
+    if ((to.path === '/login')) {
       next({ path: '/' });
       NProgress.done();
     } else {
@@ -36,6 +36,7 @@ router.beforeEach(async (to, from, next) => {
           next({ ...to, replace: true });
         } catch (error) {
           // 出错需重置令牌并重新登录（令牌过期、网络错误等原因）
+          console.log('路由出错了：',error)
           await store.dispatch('user/resetToken');
           Message.error(error || 'Has Error');
           next(`/login?redirect=${to.path}`);

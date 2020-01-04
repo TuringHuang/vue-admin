@@ -7,19 +7,28 @@ Vue.use(VueRouter);
 
 export const constantRoutes = [
   {
+    path: '/login',
+    name: 'login',
+    meta: { title: '用户登录' },
+    component: () => import('../views/Login.vue'),
+    hidden: true
+  }
+];
+
+//动态路由
+export const asyncRoutes = [
+  {
     path: '/',
     name: 'index',
     component: Layout,
     meta: {
-      title: '首页'
+      title: '首页',
+      icon: 'dashboard'
     },
     children: [
       {
         path: 'account-manager',
         name: 'account-manager',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
         meta: {
           title: '账户管理'
@@ -61,15 +70,12 @@ export const constantRoutes = [
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/Permission.vue'),
         meta: {
-          title: '权限控制'
+          title: '权限控制',
+          icon: 'lock'
         }
       }
     ]
-  }
-];
-
-//动态路由
-export const asyncRoutes = [
+  },
   {
     path: '/about',
     redirect: '/about/index',

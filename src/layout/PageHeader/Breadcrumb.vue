@@ -40,7 +40,6 @@ export default {
         return item.meta && item.meta.title;
       });
       this.routeList = matchedRoutes;
-      console.log('路由：', this.routeList);
     }
   }
 };
