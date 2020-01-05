@@ -10,7 +10,7 @@
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
       >
-        <sidebar-item v-for="route in roles" :key="route.path" :item="route" :base-path="route.path"></sidebar-item>
+        <sidebar-item v-for="route in roles" :key="route.path" :item="route" :base-path="route.path"> </sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -41,7 +41,11 @@ export default {
     variables() {
       return variables;
     }
-  }
+  },
+
+  mounted () {
+    console.log('routes: ',this.roles);
+  },
 };
 </script>
 
@@ -59,5 +63,6 @@ export default {
   border: none;
   height: 100%;
   width: 100% !important;
+
 }
 </style>

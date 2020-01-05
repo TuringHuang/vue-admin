@@ -36,7 +36,6 @@ export default {
   methods: {
     getBreadcrumb() {
       let matchedRoutes = this.$route.matched.filter(item => {
-        console.log(item.path);
         return item.meta && item.meta.title;
       });
       this.routeList = matchedRoutes;

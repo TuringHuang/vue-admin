@@ -17,80 +17,65 @@ export const constantRoutes = [
 
 //动态路由
 export const asyncRoutes = [
+
+  //没有meta,首页将不会显示
   {
     path: '/',
-    name: 'index',
     component: Layout,
-    meta: {
-      title: '首页',
-      icon: 'dashboard'
-    },
+    redirect: '/manager',
+  },
+
+  {
+    path: '/manager',
+    name: 'index.manager',
+    component: Layout,
+    redirect: '/manager/member-manager',
+    meta: { title: '账户管理', icon: 'dashboard' },
     children: [
       {
-        path: 'account-manager',
-        name: 'account-manager',
+        path: 'member-manager',
+        name: 'member-manager',
         component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
-        meta: {
-          title: '账户管理'
-        },
-        children: [
-          {
-            path: 'menu1',
-            name: 'menu1',
-            meta: {
-              title: '会员管理'
-            }
-          },
-          {
-            path: 'menu2',
-            name: 'menu2',
-            meta: {
-              title: '账号设置'
-            }
-          }
-        ]
+        meta: { title: '会员管理' }
       },
       {
-        path: '/about',
-        name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
+        path: 'admin-manager',
+        name: 'admin-manager',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
+        meta: { title: '管理员' }
+      },
+      {
+        path: 'account-setting',
+        name: 'account-setting',
         component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-        meta: {
-          title: '关于'
-        }
-      },
-
-      {
-        path: '/permission',
-        name: 'permission',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/Permission.vue'),
-        meta: {
-          title: '权限控制',
-          icon: 'lock'
-        }
+        meta: { title: '账号设置' }
       }
     ]
   },
+
   {
-    path: '/about',
-    redirect: '/about/index',
-    meta: { title: 'about' },
+    path: '/setting',
+    name: 'index.setting',
     component: Layout,
+    meta: { title: '配置管理', icon: 'lock' },
     children: [
       {
-        path: 'index',
-        name: 'about',
-        meta: {
-          title: 'index',
-          icon: 'qq',
-          roles: ['admin', 'editor'] //角色权限控制
-        },
-        component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+        path: 'website',
+        name: 'index.setting.website',
+        meta: { title: '网站配置' },
+        component: () => import('../views/website-setting.vue')
+      },
+      {
+        path: 'service',
+        name: 'index.setting.service',
+        meta: { title: '客服配置' },
+        component: () => import('../views/service-setting.vue')
+      },
+      {
+        path: 'resource',
+        name: 'index.setting.resource',
+        meta: { title: '资源配置' },
+        component: () => import('../views/resource-mgt.vue')
       }
     ]
   }
